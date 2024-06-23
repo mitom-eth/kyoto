@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import QRCode from "qrcode.react";
 
-export default function WalletExpense({ email }: { email: string }) {
+export default function WalletExpense({
+  email,
+  passcode,
+}: {
+  email: string;
+  passcode: string;
+}) {
   const [showWallet, setShowWallet] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(5);
   const [asset, setAsset] = useState<string>("usdt");
@@ -27,12 +33,12 @@ export default function WalletExpense({ email }: { email: string }) {
 
     // Generate wallet address on component mount
     generateWalletAddress();
-  }, [email]);
+  }, [email, passcode]);
 
   const generateWalletAddress = async () => {
     const hashBuffer = await crypto.subtle.digest(
       "SHA-256",
-      new TextEncoder().encode(email)
+      new TextEncoder().encode(`${email}-${passcode}`)
     );
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const hashHex = hashArray
@@ -125,7 +131,7 @@ export default function WalletExpense({ email }: { email: string }) {
       )}
       {!showWallet && (
         <div>
-          {signature && (
+          {signature && amount && (
             <div id="qrcode" className="mb-6">
               <QRCode
                 value={JSON.stringify(jsonData)}

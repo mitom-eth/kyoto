@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import GoogleLoginButton from "../components/GoogleLoginButton";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 import WalletExpense from "@/components/WalletExpense";
 
 export default function Home() {

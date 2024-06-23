@@ -85,7 +85,7 @@ export default function WalletExpense({ email }: { email: string }) {
 
   return (
     <>
-      <div className="flex items-center border-b-4 border-orange-500 justify-around">
+      <div className="flex items-center border-b-4 border-orange-500 justify-around mb-6">
         <div
           className={`cursor-pointer w-1/2 py-2 h-full text-center ${
             showWallet ? "bg-gray-100" : "bg-orange-500 text-white"
@@ -110,7 +110,7 @@ export default function WalletExpense({ email }: { email: string }) {
       {showWallet && (
         <>
           {walletAddress && (
-            <div id="qrcode" className="py-6">
+            <div id="qrcode" className="mb-6">
               <QRCode
                 value={walletAddress}
                 className="mx-auto"
@@ -126,7 +126,7 @@ export default function WalletExpense({ email }: { email: string }) {
       {!showWallet && (
         <div>
           {signature && (
-            <div id="qrcode" className="py-6">
+            <div id="qrcode" className="mb-6">
               <QRCode
                 value={JSON.stringify(jsonData)}
                 className="mx-auto"

@@ -34,7 +34,7 @@ export default function Home() {
             <WalletExpense email={email} />
             <div className="mt-6 text-center">
               <div className="mx-auto w-fit px-4 bg-gray-100 rounded-full border cursor-pointer">
-                Switch other wallets
+                Switch To Other Wallet
               </div>
             </div>
           </>
